@@ -1,0 +1,17 @@
+
+@model SimpleCQRS.InventoryItemDetailsDto
+@{
+    ViewData["Title"] = "Deactivate";
+}
+ 
+@using (Html.BeginForm())
+{
+         <h2>Deactivate @Model.Name Version(@Model.Version)?</h2> 
+
+         @Html.HiddenFor(model=>model.Id)
+         @Html.HiddenFor(model=>model.Version)
+       
+        <button name="submit">Submit</button>
+
+}
+

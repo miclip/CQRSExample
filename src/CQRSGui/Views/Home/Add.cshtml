@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Add Item";
+}
+
+@using (Html.BeginForm())
+{
+    <br/>
+    <input type="text" data-val="true" 
+                   data-val-required="The Name field is required." 
+                   id="Name" 
+                   name="Name" 
+                   value="" />
+   
+   <button name="submit">Submit</button>
+
+}

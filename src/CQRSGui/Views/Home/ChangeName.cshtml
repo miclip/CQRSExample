@@ -1,0 +1,16 @@
+
+@model SimpleCQRS.InventoryItemDetailsDto
+@{
+    ViewData["Title"] = "Change Name";
+}
+
+@using (Html.BeginForm())
+{
+    <br/>
+    @Html.HiddenFor(model => model.Id);
+    @Html.HiddenFor(model => model.Version);
+    @Html.TextBoxFor(model => model.Name);
+   
+   <button name="submit">Submit</button>
+
+}
