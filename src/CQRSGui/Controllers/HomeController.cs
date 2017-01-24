@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimpleCQRS;
+using SimpleCQRS.Models;
 
 namespace CQRSGui.Controllers
 {      

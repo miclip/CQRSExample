@@ -31,6 +31,8 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+  <ProjectReference Include="..\SimpleCQRS.Models\SimpleCQRS.Models.csproj" />
   <ProjectReference Include="..\SimpleCQRS\SimpleCQRS.csproj" />
+
 </ItemGroup>
 </Project>

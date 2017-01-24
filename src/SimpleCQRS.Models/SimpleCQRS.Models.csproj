@@ -12,7 +12,6 @@
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6" />
     <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
-    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
-    <ProjectReference Include="..\SimpleCQRS.Models\SimpleCQRS.Models.csproj" />
   </ItemGroup>
+
 </Project>

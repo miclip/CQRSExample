@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SimpleCQRS.Models;
 
 namespace SimpleCQRS
 {
@@ -8,35 +9,7 @@ namespace SimpleCQRS
         IEnumerable<InventoryItemListDto> GetInventoryItems();
         InventoryItemDetailsDto GetInventoryItemDetails(Guid id);
     }
-
-    public class InventoryItemDetailsDto
-    {
-        public Guid Id;
-        public string Name;
-        public int CurrentCount;
-        public int Version;
-
-        public InventoryItemDetailsDto(Guid id, string name, int currentCount, int version)
-        {
-            Id = id;
-            Name = name;
-            CurrentCount = currentCount;
-            Version = version;
-        }
-    }
-
-    public class InventoryItemListDto
-    {
-        public Guid Id;
-        public string Name;
-
-        public InventoryItemListDto(Guid id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-    }
-
+   
     public class InventoryListView : Handles<InventoryItemCreated>, Handles<InventoryItemRenamed>, Handles<InventoryItemDeactivated>
     {
         public void Handle(InventoryItemCreated message)
