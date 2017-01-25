@@ -19,7 +19,7 @@ namespace CQRSGui
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseConfiguration(config)
-                .UseContentRoot(Path.Combine(Directory.GetCurrentDirectory(),"CQRSGui"))
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
 

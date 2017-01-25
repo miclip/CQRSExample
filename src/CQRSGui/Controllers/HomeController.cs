@@ -1,22 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using SimpleCQRS;
-using SimpleCQRS.Models;
+using SimpleCQRS.Query.Models;
+using SimpleCQRS.Query;
+using SimpleCQRS.Query.DataAccess;
+
 
 namespace CQRSGui.Controllers
 {      
     public class HomeController : Controller
     {
         private ICommandSender _bus;
-        private ReadModelFacade _readmodel; 
+        private ReadModel _readmodel; 
         
-        public HomeController(ICommandSender bus)
+        public HomeController(ICommandSender bus, InventoryContext context)
         {
             _bus = bus;
-            _readmodel = new ReadModelFacade();
+            _readmodel = new ReadModel(context);
         }
 
         public IActionResult Index()

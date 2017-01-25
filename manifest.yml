@@ -7,4 +7,6 @@
     path: ./src
     buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git
     host: simplecqrs
+    services: 
+     - inventorydb
  

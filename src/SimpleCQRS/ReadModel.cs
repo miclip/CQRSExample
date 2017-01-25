@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SimpleCQRS.Models;
+using SimpleCQRS.Query.Models;
 
 namespace SimpleCQRS
 {
-    public interface IReadModelFacade
-    {
-        IEnumerable<InventoryItemListDto> GetInventoryItems();
-        InventoryItemDetailsDto GetInventoryItemDetails(Guid id);
-    }
-   
+    
     public class InventoryListView : Handles<InventoryItemCreated>, Handles<InventoryItemRenamed>, Handles<InventoryItemDeactivated>
     {
         public void Handle(InventoryItemCreated message)
@@ -75,18 +70,7 @@ namespace SimpleCQRS
         }
     }
 
-    public class ReadModelFacade : IReadModelFacade
-    {
-        public IEnumerable<InventoryItemListDto> GetInventoryItems()
-        {
-            return BullShitDatabase.list;
-        }
-
-        public InventoryItemDetailsDto GetInventoryItemDetails(Guid id)
-        {
-            return BullShitDatabase.details[id];
-        }
-    }
+    
 
     public static class BullShitDatabase
     {

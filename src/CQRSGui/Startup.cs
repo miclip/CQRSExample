@@ -7,7 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Steeltoe.Extensions.Configuration;
+using Steeltoe.Extensions.Configuration.CloudFoundry;
+using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
 using SimpleCQRS;
+using SimpleCQRS.Query.DataAccess;
 
 namespace CQRSGui
 {
@@ -20,7 +24,8 @@ namespace CQRSGui
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables()
+                .AddCloudFoundry();
             Configuration = builder.Build();
         }
 
@@ -32,6 +37,9 @@ namespace CQRSGui
             _bus = ConfigureBus(new FakeBus());  
             
             // Add framework services.
+             services.AddDbContext<InventoryContext>(options =>
+                  options.UseMySql(Configuration));
+
             services.AddSingleton<ICommandSender>(_bus);
             services.AddSingleton<IEventPublisher>(_bus);
             services.AddMvc();

@@ -8,11 +8,7 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
-   <ItemGroup>
-    <Content Include="wwwroot\**\*;**\*.cshtml;appsettings.json;web.config">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+   
 
   <ItemGroup>  
     <PackageReference Include="Microsoft.NETCore.App" Version="1.0.1" />
@@ -22,17 +18,22 @@
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.0.0"/> 
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.0"/> 
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.0" />
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.MySql" Version="1.0.0-rc2" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundry" Version="1.0.0-rc2" />
   </ItemGroup>
   <ItemGroup>
-  <ProjectReference Include="..\SimpleCQRS.Models\SimpleCQRS.Models.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Query.Models\SimpleCQRS.Query.Models.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Query.DataAccess\SimpleCQRS.Query.DataAccess.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Query\SimpleCQRS.Query.csproj" />
   <ProjectReference Include="..\SimpleCQRS\SimpleCQRS.csproj" />
 
 </ItemGroup>
+
 </Project>

@@ -11,8 +11,6 @@
 
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
-    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
-    <ProjectReference Include="..\SimpleCQRS.Query.Models\SimpleCQRS.Query.Models.csproj" />
-  </ItemGroup>
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.MySql" Version="1.0.0-rc2" />
+</ItemGroup>
 </Project>

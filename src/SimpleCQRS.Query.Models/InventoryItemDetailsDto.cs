@@ -1,13 +1,16 @@
 ﻿using System;
 
-namespace SimpleCQRS.Models
+namespace SimpleCQRS.Query.Models
 {
     public class InventoryItemDetailsDto
     {
-        public Guid Id;
-        public string Name;
-        public int CurrentCount;
-        public int Version;
+        public Guid Id {get;set;}
+        public string Name {get;set;}
+        public int CurrentCount {get;set;}
+        public int Version {get;set;}
+
+        public InventoryItemDetailsDto()
+        {}
 
         public InventoryItemDetailsDto(Guid id, string name, int currentCount, int version)
         {
