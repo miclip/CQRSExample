@@ -9,4 +9,5 @@
     host: simplecqrs
     services: 
      - inventorydb
+     - inventorybus
  

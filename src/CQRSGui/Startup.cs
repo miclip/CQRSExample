@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Steeltoe.Extensions.Configuration;
 using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
-using SimpleCQRS.Command;
 using SimpleCQRS.Query.DataAccess;
 using SimpleCQRS.Command.DataAccess;
+using SimpleCQRS.Command;
 
 namespace CQRSGui
 {
@@ -45,7 +45,6 @@ namespace CQRSGui
 
             services.AddSingleton<ICommandSender>(_bus);
             services.AddSingleton<IEventPublisher>(_bus);
-            services.AddSingleton<IRegister>(_bus);
             services.AddMvc();
             
         }

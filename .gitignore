@@ -28,5 +28,8 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+#publish
+.publish/
+
 # Visual Studio 2015
 .vs/
