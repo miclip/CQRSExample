@@ -21,6 +21,12 @@ namespace SimpleCQRS.Query.DataAccess
                   .HasKey(c => c.Id);
         }
 
+
+        public override int SaveChanges()
+        {
+            throw new InvalidOperationException("This context is read-only.");
+        }
+
         public DbSet<InventoryItemDetailsDto> InventoryItemDetails { get; set; }
         public DbSet<InventoryItemListDto> InventoryItems { get; set; }
 
