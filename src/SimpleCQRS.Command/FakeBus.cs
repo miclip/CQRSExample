@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace SimpleCQRS
+namespace SimpleCQRS.Command
 {
-    public class FakeBus : ICommandSender, IEventPublisher
+    public class FakeBus : ICommandSender, IEventPublisher, IRegister
     {
         private readonly Dictionary<Type, List<Action<Message>>> _routes = new Dictionary<Type, List<Action<Message>>>();
 
@@ -63,5 +63,9 @@ namespace SimpleCQRS
     public interface IEventPublisher
     {
         void Publish<T>(T @event) where T : Event;
+    }
+    public interface IRegister
+    {
+        void RegisterHandler<T>(Action<T> handler) where T : Message;
     }
 }

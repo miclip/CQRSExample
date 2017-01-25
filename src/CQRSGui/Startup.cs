@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using Steeltoe.Extensions.Configuration;
 using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
-using SimpleCQRS;
+using SimpleCQRS.Command;
 using SimpleCQRS.Query.DataAccess;
+using SimpleCQRS.Command.DataAccess;
 
 namespace CQRSGui
 {
@@ -34,19 +36,21 @@ namespace CQRSGui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            _bus = ConfigureBus(new FakeBus());  
+            _bus = ConfigureBus(new FakeBus(), 
+                    new DbContextOptionsBuilder<InventoryCommandContext>().UseMySql(Configuration));  
             
             // Add framework services.
-             services.AddDbContext<InventoryContext>(options =>
+            services.AddDbContext<InventoryQueryContext>(options =>
                   options.UseMySql(Configuration));
 
             services.AddSingleton<ICommandSender>(_bus);
             services.AddSingleton<IEventPublisher>(_bus);
+            services.AddSingleton<IRegister>(_bus);
             services.AddMvc();
             
         }
 
-        private FakeBus ConfigureBus(FakeBus bus)
+        private FakeBus ConfigureBus(FakeBus bus, DbContextOptionsBuilder<InventoryCommandContext> optionsBuilder)
         {
             var storage = new EventStore(bus);
             var rep = new Repository<InventoryItem>(storage);
@@ -56,16 +60,17 @@ namespace CQRSGui
             bus.RegisterHandler<DeactivateInventoryItem>(commands.Handle);
             bus.RegisterHandler<RemoveItemsFromInventory>(commands.Handle);
             bus.RegisterHandler<RenameInventoryItem>(commands.Handle);
-            var detail = new InventoryItemDetailView();
+            var detail = new InventoryItemDetailView(optionsBuilder);
             bus.RegisterHandler<InventoryItemCreated>(detail.Handle);
             bus.RegisterHandler<InventoryItemDeactivated>(detail.Handle);
             bus.RegisterHandler<InventoryItemRenamed>(detail.Handle);
             bus.RegisterHandler<ItemsCheckedInToInventory>(detail.Handle);
             bus.RegisterHandler<ItemsRemovedFromInventory>(detail.Handle);
-            var list = new InventoryListView();
+            var list = new InventoryListView(optionsBuilder);
             bus.RegisterHandler<InventoryItemCreated>(list.Handle);
             bus.RegisterHandler<InventoryItemRenamed>(list.Handle);
             bus.RegisterHandler<InventoryItemDeactivated>(list.Handle);
+            
             return bus;
         }
 

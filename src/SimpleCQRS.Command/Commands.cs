@@ -1,5 +1,5 @@
 using System;
-namespace SimpleCQRS
+namespace SimpleCQRS.Command
 {
     public class Command : Message
     {

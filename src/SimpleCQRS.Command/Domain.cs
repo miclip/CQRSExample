@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SimpleCQRS
+namespace SimpleCQRS.Command
 {
     public class InventoryItem : AggregateRoot
     {

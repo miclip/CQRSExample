@@ -10,9 +10,9 @@ namespace SimpleCQRS.Query
 {
     public class ReadModel: IReadModel
     {
-        private InventoryContext _context;
+        private InventoryQueryContext _context;
 
-        public ReadModel(InventoryContext context)
+        public ReadModel(InventoryQueryContext context)
         {
             _context = context;
         }
@@ -26,11 +26,5 @@ namespace SimpleCQRS.Query
         {
             return _context.InventoryItemDetails.Single(i=>i.Id == id);
         }
-    }
-
-    public static class BullShitDatabase
-    {
-        public static Dictionary<Guid, InventoryItemDetailsDto> details = new Dictionary<Guid,InventoryItemDetailsDto>();
-        public static List<InventoryItemListDto> list = new List<InventoryItemListDto>();
     }
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using SimpleCQRS;
+using SimpleCQRS.Command;
 using SimpleCQRS.Query.Models;
+using SimpleCQRS.Command.Models;
 using SimpleCQRS.Query;
 using SimpleCQRS.Query.DataAccess;
+using SimpleCQRS.Command.DataAccess;
 
 
 namespace CQRSGui.Controllers
@@ -19,10 +21,10 @@ namespace CQRSGui.Controllers
         private ICommandSender _bus;
         private ReadModel _readmodel; 
         
-        public HomeController(ICommandSender bus, InventoryContext context)
+        public HomeController(ICommandSender bus, InventoryQueryContext queryContext)
         {
             _bus = bus;
-            _readmodel = new ReadModel(context);
+            _readmodel = new ReadModel(queryContext);
         }
 
         public IActionResult Index()

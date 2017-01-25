@@ -6,9 +6,9 @@ using SimpleCQRS.Query.Models;
 
 namespace SimpleCQRS.Query.DataAccess
 {
-    public class InventoryContext : DbContext
+    public class InventoryQueryContext : DbContext
     {
-        public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+        public InventoryQueryContext(DbContextOptions<InventoryQueryContext> options) : base(options)
         {
 
         }

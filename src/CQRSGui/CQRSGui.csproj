@@ -32,7 +32,9 @@
   <ProjectReference Include="..\SimpleCQRS.Query.Models\SimpleCQRS.Query.Models.csproj" />
   <ProjectReference Include="..\SimpleCQRS.Query.DataAccess\SimpleCQRS.Query.DataAccess.csproj" />
   <ProjectReference Include="..\SimpleCQRS.Query\SimpleCQRS.Query.csproj" />
-  <ProjectReference Include="..\SimpleCQRS\SimpleCQRS.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Command.Models\SimpleCQRS.Command.Models.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Command.DataAccess\SimpleCQRS.Command.DataAccess.csproj" />
+  <ProjectReference Include="..\SimpleCQRS.Command\SimpleCQRS.Command.csproj" />
 
 </ItemGroup>
 
